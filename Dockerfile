@@ -4,7 +4,7 @@ COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 RUN ./mvnw dependency:go-offline
 COPY ./src ./src
-RUN ./mvnw clean install
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests -B
 
 FROM gcr.io/distroless/java21-debian12 AS final
 WORKDIR /opt/app
