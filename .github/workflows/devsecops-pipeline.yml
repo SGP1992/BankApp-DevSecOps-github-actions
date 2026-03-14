@@ -1,5 +1,17 @@
 name: DevSecOps pipeline 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main, devsecops ]
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
+      - 'LICENSE'
+      - 'screenshots/**'
+      - 'scripts/**'
+
+permissions:
+  id-token: write
+  contents: read
+  security-events: write
 
 jobs:
